@@ -10,6 +10,8 @@ export type AutograderProps = {
   autogradingResults: AutogradingResult[];
   testcases: ITestcase[];
   handleTestcaseEval: (testcaseId: number) => void;
+  showTokenCount: boolean;
+  tokenCount: number;
 };
 
 type State = {
@@ -23,7 +25,7 @@ class Autograder extends React.Component<AutograderProps, State> {
 
     this.state = {
       showTestcases: true,
-      showResults: true
+      showResults: true,
     };
   }
 
@@ -107,6 +109,7 @@ class Autograder extends React.Component<AutograderProps, State> {
         <Collapse isOpen={this.state.showTestcases}>{testcases}</Collapse>
         {collapseButton('Autograder Results', this.state.showResults, this.toggleResults)}
         <Collapse isOpen={this.state.showResults}>{results}</Collapse>
+        {this.props.showTokenCount ? "Number of tokens: " + this.props.tokenCount : ""}
       </div>
     );
   }

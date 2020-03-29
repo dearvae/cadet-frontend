@@ -48,6 +48,7 @@ import {
   QuestionTypes
 } from './assessmentShape';
 import GradingResult from './GradingResult';
+import CountToken from '../../assets/countToken';
 
 export type AssessmentWorkspaceProps = DispatchProps & OwnProps & StateProps;
 
@@ -361,6 +362,9 @@ class AssessmentWorkspace extends React.Component<
             testcases={props.editorTestcases}
             autogradingResults={props.autogradingResults}
             handleTestcaseEval={this.props.handleTestcaseEval}
+            showTokenCount={this.props.assessment!.category === "Contest"}
+            //tokenCount={this.countNumOfToken(this.props.editorValue!)}
+            tokenCount={CountToken(this.props.editorValue!)}
           />
         ),
         id: SideContentType.autograder
